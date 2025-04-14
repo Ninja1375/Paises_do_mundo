@@ -1,4 +1,4 @@
-![logo](assets/img/logo.)
+![logo](assets/img/logo.png)
 
 Explore informações detalhadas sobre todos os países do mundo! Este projeto consome a API pública do [REST Countries](https://restcountries.com/) e exibe dados como:
 
