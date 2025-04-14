@@ -30,6 +30,10 @@ Explore informações detalhadas sobre todos os países do mundo! Este projeto c
    ```bash
    git clone https://github.com/Ninja1375/Paises_do_mundo.git
    ```
+2. Abra o arquivo `index.html` em seu navegador.
+
+*Não é necessário backend ou instalação de dependências.*
+
 ## Apoie-me:
 
 <a href="https://buymeacoffee.com/antonio13" target="_blank"><img loading="lazy" src="https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=&slug=seu_nome_de_usuario&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" width="130" height="30"></a>
