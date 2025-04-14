@@ -1,0 +1,182 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f6f5f3;
+  color: #222;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+header {
+  background-color: #f6f5f3;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+header .logo {
+  width: 160px;
+  height: auto;
+}
+
+header h1.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+#toggleDark {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.3s;
+}
+
+body.dark #toggleDark {
+  color: #ffa726;
+}
+
+.controles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+}
+
+input, select {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #a35d00;
+  box-shadow: 0 0 0 3px rgba(163, 93, 0, 0.2);
+}
+
+body.dark input:focus,
+body.dark select:focus {
+  border-color: #ffa726;
+  box-shadow: 0 0 0 3px rgba(255, 167, 38, 0.2);
+}
+
+.controles button {
+  padding: 10px 15px;
+  font-size: 1.2rem;
+  background-color: #a35d00;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.controles button i {
+  pointer-events: none;
+}
+
+.controles button:hover {
+  background-color: #874b00;
+}
+
+body.dark .controles button {
+  background-color: #ffa726;
+  color: #000;
+}
+
+body.dark .controles button:hover {
+  background-color: #ff9800;
+}
+
+#paisesContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.pais-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.pais-card:hover {
+  transform: scale(1.04);
+}
+
+.pais-card img {
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.pais-card h2 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.pais-card p {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .pais-card h2 {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+}
+  
+.pais-card p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  text-align: left;
+ }
+}
+
+body.dark {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
+body.dark header {
+  background-color: #1f1f1f;
+}
+
+body.dark .controles input,
+body.dark .controles select {
+  background-color: #2b2b2b;
+  color: #fff;
+  border: 1px solid #444;
+}
+
+body.dark .pais-card {
+  background-color: #1e1e1e;
+}
