@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Explore informações detalhadas sobre todos os países do mundo, incluindo bandeiras, capitais, população e moedas.">
+  <meta name="author" content="Antônio Nascimento">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <title>Países do Mundo - Informações de todos os países</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Países do Mundo" class="logo" />
+    <h1 class="sr-only">Países do Mundo</h1>
+    <button id="toggleDark" title="Tema Escuro/Claro"><i class="fas fa-moon"></i></button>
+  </header>
+
+  <main>
+    <div class="controles">
+      <input type="text" id="inputPais" placeholder="Digite o nome de um país..." />
+      <button id="btnPesquisar" title="Pesquisar"><i class="fas fa-search"></i></button>
+      <select id="regionSelect">
+        <option value="africa">África</option>
+        <option value="americas" selected>Américas</option>
+        <option value="asia">Ásia</option>
+        <option value="europe">Europa</option>
+        <option value="oceania">Oceania</option>
+        <option value="antarctic">Antártica</option>
+      </select>
+    </div>
+    <div id="paisesContainer"></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
