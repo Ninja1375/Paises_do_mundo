@@ -7,7 +7,7 @@ const toggleDark = document.getElementById('toggleDark');
 let todosPaises = [];
 
 // Fetch inicial da API
-fetch('https://restcountries.com/v3.1/all?lang=pt')
+fetch('fetch('https://restcountries.com/v3.1/all?fields=name,capital,population,currencies,region,flags&lang=pt')
   .then(res => res.json())
   .then(data => {
     todosPaises = data;
