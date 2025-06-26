@@ -7,15 +7,16 @@ const toggleDark = document.getElementById('toggleDark');
 let todosPaises = [];
 
 // Fetch inicial da API
-fetch('https://restcountries.com/v3.1/all?fields=name,capital,population,currencies,region')
+fetch('https://restcountries.com/v3.1/all?fields=name,capital,population,currencies,region,flags')
   .then(res => res.json())
   .then(data => {
     todosPaises = data;
     mostrarPorRegiao('americas');
-  });
+  })
+  .catch(err => console.error('Erro ao carregar países:', err));
 
 function criarCard(pais) {
-  const nome = pais.translations.por?.common || pais.name.common;
+  const nome = pais.name.common;
   const capital = pais.capital?.[0] || 'N/A';
   const populacao = pais.population.toLocaleString('pt-BR');
   const moeda = pais.currencies ? Object.values(pais.currencies)[0].name : 'N/A';
@@ -39,25 +40,31 @@ function mostrarPaises(lista) {
 }
 
 function mostrarPorRegiao(regiao) {
-  const filtrados = todosPaises.filter(p => p.region.toLowerCase() === regiao.toLowerCase());
+  const filtrados = todosPaises.filter(p => 
+    p.region.toLowerCase().includes(regiao.toLowerCase())
+  );
   mostrarPaises(filtrados);
 }
 
 function buscarPorNome(texto) {
   const termo = texto.trim().toLowerCase();
-  const resultados = todosPaises.filter(p => {
-    const nome = p.translations.por?.common || p.name.common;
-    return nome.toLowerCase().startsWith(termo);
-  });
+  const resultados = todosPaises.filter(p => 
+    p.name.common.toLowerCase().includes(termo)
+  );
   mostrarPaises(resultados);
 }
 
+// Event Listeners
 btnPesquisar.addEventListener('click', () => {
   buscarPorNome(input.value);
 });
 
 input.addEventListener('input', () => {
-  buscarPorNome(input.value);
+  if (input.value === '') {
+    mostrarPorRegiao(regionSelect.value);
+  } else {
+    buscarPorNome(input.value);
+  }
 });
 
 input.addEventListener('keydown', e => {
