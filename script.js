@@ -6,12 +6,20 @@ const toggleDark = document.getElementById('toggleDark');
 
 let todosPaises = [];
 
+// Verificar tema salvo
+if (localStorage.getItem('darkMode') === 'enabled') {
+  document.body.classList.add('dark');
+  const icon = toggleDark.querySelector('i');
+  icon.classList.add('fa-sun');
+  icon.classList.remove('fa-moon');
+}
+
 // Fetch inicial da API
-fetch('https://restcountries.com/v3.1/all?fields=name,capital,population,currencies,region,flags')
+fetch('https://restcountries.com/v3.1/all?fields=name,capital,population,currencies,region,flags,subregion')
   .then(res => res.json())
   .then(data => {
     todosPaises = data;
-    mostrarPorRegiao('americas');
+    mostrarPorRegiao(regionSelect.value);
   })
   .catch(err => console.error('Erro ao carregar países:', err));
 
@@ -20,7 +28,7 @@ function criarCard(pais) {
   const capital = pais.capital?.[0] || 'N/A';
   const populacao = pais.population.toLocaleString('pt-BR');
   const moeda = pais.currencies ? Object.values(pais.currencies)[0].name : 'N/A';
-  const regiao = pais.region;
+  const regiao = pais.region === 'Antarctic' ? 'Antártida' : pais.region;
   const bandeira = pais.flags.svg;
 
   return `
@@ -40,9 +48,13 @@ function mostrarPaises(lista) {
 }
 
 function mostrarPorRegiao(regiao) {
-  const filtrados = todosPaises.filter(p => 
-    p.region.toLowerCase().includes(regiao.toLowerCase())
-  );
+  const filtrados = todosPaises.filter(p => {
+    if (regiao.toLowerCase() === 'antártida') {
+      return p.region === 'Antarctic';
+    }
+    return p.region.toLowerCase() === regiao.toLowerCase() || 
+           p.subregion?.toLowerCase() === regiao.toLowerCase();
+  });
   mostrarPaises(filtrados);
 }
 
@@ -82,4 +94,11 @@ toggleDark.addEventListener("click", () => {
   const icon = toggleDark.querySelector("i");
   icon.classList.toggle("fa-moon");
   icon.classList.toggle("fa-sun");
+  
+  // Salvar preferência no localStorage
+  if (document.body.classList.contains("dark")) {
+    localStorage.setItem('darkMode', 'enabled');
+  } else {
+    localStorage.setItem('darkMode', 'disabled');
+  }
 });
