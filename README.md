@@ -15,7 +15,7 @@ Explore informações detalhadas sobre todos os países do mundo! Este projeto c
 
 ## Funcionalidades
 
-- Filtro por região (África, Américas, Ásia, Europa, Oceania, Antártica)
+- Filtro por região (África, Américas, Ásia, Europa, Oceania)
 - Busca em tempo real por nome de país
 - Modo escuro/claro com troca de ícone
 - Layout responsivo adaptado para dispositivos móveis
