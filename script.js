@@ -15,7 +15,7 @@ if (localStorage.getItem('darkMode') === 'enabled') {
 }
 
 // Fetch inicial da API
-fetch('https://restcountries.com/v3.1/all?fields=name,capital,population,currencies,region,flags,subregion')
+fetch('https://restcountries.com/v3.1/all?fields=name,capital,population,currencies,region,flags')
   .then(res => res.json())
   .then(data => {
     todosPaises = data;
@@ -28,7 +28,7 @@ function criarCard(pais) {
   const capital = pais.capital?.[0] || 'N/A';
   const populacao = pais.population.toLocaleString('pt-BR');
   const moeda = pais.currencies ? Object.values(pais.currencies)[0].name : 'N/A';
-  const regiao = pais.region === 'Antarctic' ? 'Antártida' : pais.region;
+  const regiao = pais.region;
   const bandeira = pais.flags.svg;
 
   return `
@@ -48,13 +48,9 @@ function mostrarPaises(lista) {
 }
 
 function mostrarPorRegiao(regiao) {
-  const filtrados = todosPaises.filter(p => {
-    if (regiao.toLowerCase() === 'antártida') {
-      return p.region === 'Antarctic';
-    }
-    return p.region.toLowerCase() === regiao.toLowerCase() || 
-           p.subregion?.toLowerCase() === regiao.toLowerCase();
-  });
+  const filtrados = todosPaises.filter(p => 
+    p.region.toLowerCase() === regiao.toLowerCase()
+  );
   mostrarPaises(filtrados);
 }
 
